@@ -1,6 +1,7 @@
+<%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
 <meta charset="UTF-8">
 <title>Postulaciones a Becas</title>
@@ -14,6 +15,26 @@
 <div>
 	<%@include file="header.jsp" %>
 	<h1>Plataforma de postulación a Becas Sustantiva</h1>
+	
+	<h3>
+	<%
+	
+		Cookie[] galletas = request.getCookies();
+		Cookie chocolate = null;
+		
+		for (int i = 0; i <galletas.length; i++){
+			if (galletas[i].getName().equalsIgnoreCase("nombre")){
+				chocolate = galletas[i];
+			}
+		}
+		
+		if (chocolate != null){
+			out.print(chocolate.getValue());
+		}
+	
+	 %>
+	 </h3>
+	
 
 </div>
 </div>

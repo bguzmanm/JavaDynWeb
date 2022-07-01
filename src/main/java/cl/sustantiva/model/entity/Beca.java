@@ -1,4 +1,4 @@
-package cl.sustantiva.model;
+package cl.sustantiva.model.entity;
 
 public class Beca {
 	
@@ -6,6 +6,7 @@ public class Beca {
 	private String nombre;
 	private double monto;
 	private int cupos;
+	
 	public Beca(int id, String nombre, double monto, int cupos) {
 		super();
 		this.id = id;

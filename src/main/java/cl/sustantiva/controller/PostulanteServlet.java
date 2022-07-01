@@ -1,13 +1,17 @@
-package cl.sustantiva.servlets;
+package cl.sustantiva.controller;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import cl.sustantiva.service.PostulanteService;
+import cl.sustantiva.model.entity.Postulante;
+import cl.sustantiva.model.service.PostulanteService;
 
 
 @WebServlet("/postulantes")
@@ -20,10 +24,20 @@ public class PostulanteServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-
-		PostulanteService ps = new PostulanteService();
+		HttpSession session = (HttpSession)request.getSession();
 		
-		request.setAttribute("postulantes", ps.get());
+		if (session.getAttribute("listaPostulantes")==null) {
+			System.out.println("Creo variable de sesión -> /postulante");
+			
+			PostulanteService ps = new PostulanteService();
+			request.setAttribute("postulantes", ps.get());
+		} else {
+
+			List<Postulante> lista = (List<Postulante>)session.getAttribute("listaPostulantes");
+			request.setAttribute("postulantes", lista);
+		}
+		
+		
 		getServletContext().getRequestDispatcher("/view/postulantes.jsp").forward(request, response);
 		
 	}

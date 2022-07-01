@@ -1,9 +1,9 @@
-package cl.sustantiva.service;
+package cl.sustantiva.model.service;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import cl.sustantiva.model.Postulante;
+import cl.sustantiva.model.entity.Postulante;
 
 public class PostulanteService {
 

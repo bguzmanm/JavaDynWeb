@@ -1,4 +1,4 @@
-package cl.sustantiva.model;
+package cl.sustantiva.model.entity;
 
 public class Postulante {
 	

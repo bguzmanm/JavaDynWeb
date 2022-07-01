@@ -22,7 +22,6 @@
 		<header>
 			<%@include file="header.jsp" %>
 			<h1>Plataforma de postulación a Becas Sustantiva</h1>
-			<h2>${nombre}</h2>
 		</header>
 		<main>
 			<table class="table">
