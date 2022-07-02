@@ -26,13 +26,14 @@ public class PostulanteServlet extends HttpServlet {
 
 		HttpSession session = (HttpSession)request.getSession();
 		
+		//Si no existe la variable sesión, la creo y le pongo los datos por defecto
 		if (session.getAttribute("listaPostulantes")==null) {
 			System.out.println("Creo variable de sesión -> /postulante");
 			
 			PostulanteService ps = new PostulanteService();
 			request.setAttribute("postulantes", ps.get());
 		} else {
-
+			//si existe la variable de sesión, entonces, la leo
 			List<Postulante> lista = (List<Postulante>)session.getAttribute("listaPostulantes");
 			request.setAttribute("postulantes", lista);
 		}

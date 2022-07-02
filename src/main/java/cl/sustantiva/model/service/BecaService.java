@@ -3,6 +3,7 @@ package cl.sustantiva.model.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import cl.sustantiva.model.conn.Conexion;
 import cl.sustantiva.model.entity.Beca;
 
 public class BecaService {
@@ -12,6 +13,7 @@ public class BecaService {
 
 	public BecaService() {
 		super();
+		
 		
 		this.becas = new ArrayList<Beca>();
 		llenaBecas();

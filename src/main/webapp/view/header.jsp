@@ -18,6 +18,12 @@
 						href="${pageContext.request.contextPath}/postulantes/new">Nuevo Postulante</a>
 					</li>
 					<li class="nav-item"><a class="nav-link"
+						href="${pageContext.request.contextPath}/country">Paises</a>
+					</li>
+					<li class="nav-item"><a class="nav-link"
+						href="${pageContext.request.contextPath}/city">Ciudades</a>
+					</li>
+					<li class="nav-item"><a class="nav-link"
 						href="${pageContext.request.contextPath}/becas">Becas</a></li>
 
 				</ul>
