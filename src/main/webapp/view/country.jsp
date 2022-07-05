@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>	
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Registro Postulante</title>
+<title>País</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- CSS only -->
 <link
@@ -17,29 +18,20 @@
 	<div class="container">
 		<header>
 			<%@include file="header.jsp"%>
-			<h3>Crea un nuevo Postulante</h3>
+			<h3><c:out value="${titulo}"></c:out></h3>
 		</header>
 		<main>
-			<form action="${pageContext.request.contextPath}/postulantes/new"
+			
+			<form action="${pageContext.request.contextPath}/country"
 				method="post" class="form">
 				<div class="row pt-3">
 					<div class="col">
-						<input type="text" class="form-control" id="nombre" name="nombre"
-							placeholder="Nombre" aria-label="Nombre">
+						<label for="country_id" class="form-label">Id:</label>
+						<input type="text" class="form-control" id="country_id" name="country_id" value="${country.getCountry_id()}" readonly>
 					</div>
 					<div class="col">
-						<input type="text" class="form-control" placeholder="Apellido"
-							id="apellido" name="apellido" aria-label="Apellido">
-					</div>
-				</div>
-				<div class="row pt-3">
-					<div class="col">
-						<input type="number" class="form-control" placeholder="46"
-							id="edad" name="edad" aria-label="46">
-					</div>
-					<div class="col">
-						<input type="number" step="any" class="form-control" placeholder="6.5"
-							id="nota" name="nota" aria-label="6.5">
+						<label for="country" class="form-label">Nombre:</label>
+						<input type="text" class="form-control" id="country" name="country" value="${country.getCountry()}" >
 					</div>
 				</div>
 				<div class="row pt-3">

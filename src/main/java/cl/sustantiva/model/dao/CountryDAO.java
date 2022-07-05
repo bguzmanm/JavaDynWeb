@@ -16,7 +16,21 @@ public class CountryDAO implements ICountryDAO {
 	
 	@Override
 	public void create(Country c) {
-		// TODO Auto-generated method stub
+
+
+		try {
+			
+			String sql = "insert into country (country) values ('" + c.getCountry() + "')";
+			
+			Connection conn = Conexion.getConnection();
+			Statement sta = conn.createStatement();
+			
+			sta.execute(sql);
+			
+		} catch (SQLException e) {
+			System.out.println("Error al crear Country");
+			e.printStackTrace();
+		}
 
 	}
 
@@ -49,20 +63,67 @@ public class CountryDAO implements ICountryDAO {
 
 	@Override
 	public Country read(int country_id) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		Country country = new Country();
+		
+		try {
+			
+			Connection conn = Conexion.getConnection();
+			String sql = "select country_id, country from country where country_id = " + country_id;
+			
+			Statement sta = conn.createStatement();
+			
+			ResultSet rs = sta.executeQuery(sql);
+			
+			if (rs.next()) {
+				country.setCountry_id(rs.getInt("country_id"));
+				country.setCountry(rs.getString("country"));
+			}
+						
+		} catch (SQLException e) {
+			System.out.println("Error al consultar la BD.");
+			e.printStackTrace();
+		}
+		
+		return country;
 	}
 
 	@Override
 	public void update(Country c) {
-		// TODO Auto-generated method stub
+
+		try {
+			
+			String sql = "update country set country = '" + c.getCountry() + "' where country_id = " + c.getCountry_id();
+			
+			Connection conn = Conexion.getConnection();
+			Statement sta = conn.createStatement();
+			
+			sta.execute(sql);
+			
+		} catch (SQLException e) {
+			System.out.println("Error al actualizar Country");
+			e.printStackTrace();
+		}
 
 	}
 
 	@Override
 	public void delete(int country_id) {
-		// TODO Auto-generated method stub
 
+		try {
+			
+			String sql = "delete from country where country_id = " + country_id;
+			
+			
+			Connection conn = Conexion.getConnection();
+			Statement sta = conn.createStatement();
+			
+			sta.execute(sql);
+			
+		} catch (SQLException e) {
+			System.out.println("Error al borrar Country");
+			e.printStackTrace();
+		}
 	}
 
 }

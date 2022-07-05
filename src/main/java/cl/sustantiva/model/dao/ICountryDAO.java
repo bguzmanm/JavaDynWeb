@@ -19,5 +19,4 @@ public interface ICountryDAO {
 	public void update(Country c);
 	public void delete(int country_id);
 	
-	
 }
