@@ -80,7 +80,13 @@ public class CountryServlet extends HttpServlet {
 		
 		Country country = new Country(Integer.parseInt(id), nombre);
 		
-		cs.create(country);
+		if (id=="0") {
+			cs.create(country);	
+		} else {
+			cs.update(country);	
+		}
+		
+		
 		
 		request.setAttribute("countrys", cs.read());		
 		getServletContext().getRequestDispatcher("/view/countrys.jsp").forward(request, response);

@@ -14,6 +14,16 @@
 	rel="stylesheet"
 	integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
 	crossorigin="anonymous">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<link
+	href="http://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css"
+	rel="stylesheet">
+<script
+	src="http://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+<script src="https://kit.fontawesome.com/81a2ed02b0.js"
+	crossorigin="anonymous"></script>
+
 </head>
 <body>
 
@@ -23,12 +33,15 @@
 			<h1>Listado de Ciudades</h1>
 		</header>
 		<main>
-		<table class="table">
+			<a href="${pageContext.request.contextPath}/city?op=new"
+				class="btn btn-primary">Crear Nueva Ciudad</a>
+			<table class="table" id="ciudades">
 				<thead class="table-dark">
 					<tr>
 						<th>Id</th>
 						<th>Nombre</th>
-						<th>Id Pais</th>
+						<th>Pais</th>
+						<th>Acciones</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -36,7 +49,12 @@
 						<tr>
 							<th><c:out value="${c.getCity_id()}"></c:out></th>
 							<td><c:out value="${c.getCity()}"></c:out></td>
-							<td><c:out value="${c.getCountry_id()}"></c:out></td>
+							<td><c:out value="${c.getCountry().getCountry()}"></c:out></td>
+							<td><a href="${pageContext.request.contextPath}/city?id=${c.getCity_id()}&op=edit">
+									<i class="fa-solid fa-pen-to-square"></i></a> 
+								<a href="${pageContext.request.contextPath}/city?id=${c.getCity_id()}&op=del">
+									<i class="fa-solid fa-trash"></i>
+							</a></td>
 						</tr>
 					</c:forEach>
 
@@ -44,7 +62,11 @@
 			</table>
 		</main>
 	</div>
-
+	<script>
+		$(document).ready(function() {
+			$('#ciudades').DataTable();
+		});
+	</script>
 
 </body>
 </html>
