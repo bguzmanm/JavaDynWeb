@@ -18,6 +18,9 @@
 					<li class="nav-item"><a class="nav-link"
 						href="${pageContext.request.contextPath}/city">Ciudades</a>
 					</li>
+					<li class="nav-item"><a class="nav-link"
+						href="${pageContext.request.contextPath}/address">Direcciones</a>
+					</li>
 
 				</ul>
 			</div>

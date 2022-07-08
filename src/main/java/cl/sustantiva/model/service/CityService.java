@@ -22,6 +22,11 @@ public class CityService {
 	public List<City> readByCountry(int country_id){
 		return cityDAO.readByCountry(country_id);
 	}
+	public List<City> readOrderByCountry(){
+		return cityDAO.readOrderByCountry();
+	}
+	
+	
 	
 	public City read(int city_id) {
 		return cityDAO.read(city_id);

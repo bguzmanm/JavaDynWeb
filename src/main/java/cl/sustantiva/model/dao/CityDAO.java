@@ -156,5 +156,34 @@ public class CityDAO implements ICityDAO {
 		return lista;
 	
 	}
+	
+	@Override
+	public List<City> readOrderByCountry() {
+		
+		List<City> lista = new ArrayList<City>();
+		
+		try {
+			Connection conn = Conexion.getConnection();
+			String sql = "select  city_id, city, ci.country_id, c.country from city ci "
+					+ "inner join country c on ci.country_id = c.country_id order by ci.country_id"; 
+			
+			Statement sta = conn.createStatement();
+			
+			ResultSet rs = sta.executeQuery(sql);
+			
+			while (rs.next()) {
+				lista.add(new City(rs.getInt("city_id"), rs.getString("city"), rs.getInt("country_id")));
+				
+			}
+			
+		} catch (SQLException e) {
+			System.out.println("Error al consultar la BD.");
+			e.printStackTrace();
+		}
+		
+		
+		return lista;
+		
+	}
 
 }
