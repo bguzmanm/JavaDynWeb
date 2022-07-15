@@ -16,26 +16,7 @@
 	<%@include file="header.jsp" %>
 	<h1>Plataforma de Gestión de Direcciones</h1>
 	
-	<h3>
-	<%
 	
-		Cookie[] galletas = request.getCookies();
-		Cookie chocolate = null;
-		
-		for (int i = 0; i <galletas.length; i++){
-			if (galletas[i].getName().equalsIgnoreCase("nombre")){
-				chocolate = galletas[i];
-			}
-		}
-		
-		if (chocolate != null){
-			out.print(chocolate.getValue());
-		}
-	
-	 %>
-	 </h3>
-	
-
 </div>
 </div>
 	

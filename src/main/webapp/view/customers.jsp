@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Listado de Paises</title>
+<title>Listado de Clientes</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- CSS only -->
@@ -26,28 +26,34 @@
 	<div class="container">
 			<header>
 				<%@include file="header.jsp"%>
-				<h1>Listado de Paises</h1>
+				<h1>Listado de Clientes</h1>
 			</header>
 		<main>
-			<a class="btn btn-primary" href="${pageContext.request.contextPath}/country?op=new">Crear nuevo País</a>
-			<table class="table" id="paises">
+			<a class="btn btn-primary" href="${pageContext.request.contextPath}/customer?op=new">Crear nuevo Cliente</a>
+			<table class="table" id="clientes">
 				<thead class="table-dark">
 					<tr>
 						<th>Id</th>
 						<th>Nombre</th>
+						<th>Apellido</th>
+						<th>Email</th>
+						<th>Vigente</th>
 						<th>Acciones</th>
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach var="c" items="${countrys}">
+					<c:forEach var="c" items="${customers}">
 						<tr>
-							<th><c:out value="${c.getCountry_id()}"></c:out></th>
-							<td><c:out value="${c.getCountry()}"></c:out></td>
+							<th><c:out value="${c.getCustomer_id()}"></c:out></th>
+							<td><c:out value="${c.getFirst_name()}"></c:out></td>
+							<td><c:out value="${c.getLast_name()}"></c:out></td>
+							<td><c:out value="${c.getEmail()}"></c:out></td>
+							<td><c:out value="${c.getActive()}"></c:out></td>
 							<td>
-								<a href="${pageContext.request.contextPath}/country?id=${c.getCountry_id()}">
+								<a href="${pageContext.request.contextPath}/customer?op=edit&id=${c.getCustomer_id()}">
 									<i class="fa-solid fa-pen-to-square"></i></a>
 								 
-								<a href="${pageContext.request.contextPath}/country?id=${c.getCountry_id()}&op=del">
+								<a href="${pageContext.request.contextPath}/customer?op=del&id=${c.getCustomer_id()}">
 									<i class="fa-solid fa-trash"></i></a>
 							</td>
 						</tr>
@@ -59,7 +65,7 @@
 	</div>
 <script>
 $(document).ready( function () {
-    $('#paises').DataTable();
+    $('#clientes').DataTable();
 } );
 </script>
 

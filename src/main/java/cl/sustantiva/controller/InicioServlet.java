@@ -7,7 +7,6 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 
 @WebServlet("/")
@@ -26,12 +25,7 @@ public class InicioServlet extends HttpServlet {
 		chocolate.setMaxAge(60);
 		response.addCookie(chocolate);
 				
-
-		
-		
 		getServletContext().getRequestDispatcher("/view/index.jsp").forward(request, response);
-		
-		
 		
 	}
 

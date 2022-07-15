@@ -21,6 +21,9 @@
 					<li class="nav-item"><a class="nav-link"
 						href="${pageContext.request.contextPath}/address">Direcciones</a>
 					</li>
+					<li class="nav-item"><a class="nav-link"
+						href="${pageContext.request.contextPath}/customer?op=list">Clientes</a>
+					</li>
 
 				</ul>
 			</div>
