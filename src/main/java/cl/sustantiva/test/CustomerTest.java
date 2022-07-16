@@ -12,7 +12,6 @@ import cl.sustantiva.model.service.CustomerService;
 import cl.sustantiva.model.service.CustomerServiceImpl;
 
 class CustomerTest {
-
 	
 	
 	@Test
