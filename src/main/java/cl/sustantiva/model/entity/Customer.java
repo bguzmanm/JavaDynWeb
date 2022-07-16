@@ -7,9 +7,11 @@ public class Customer {
 	private String last_name;
 	private String email;
 	private int active;
+	
 	public Customer() {
 		super();
 	}
+	
 	public Customer(int customer_id, String first_name, String last_name, String email, int active) {
 		super();
 		this.customer_id = customer_id;
@@ -18,6 +20,7 @@ public class Customer {
 		this.email = email;
 		this.active = active;
 	}
+	
 	public int getCustomer_id() {
 		return customer_id;
 	}

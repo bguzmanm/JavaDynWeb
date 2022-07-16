@@ -49,6 +49,21 @@ public class CustomerServlet extends HttpServlet {
 
 			break;
 		}
+		case "new": {
+			jsp = "/view/customer.jsp";
+			break;
+		}		
+		case "del": {
+			//obtengo el ID de Customer que se quiere borrar.
+			String id = request.getParameter("id");
+			//borramos el cliente
+			service.borrar(Integer.parseInt(id));
+			
+			//obtengo la lista de clietnes restantes, y se las paso al request.
+			request.setAttribute("customers", service.leer());
+			break;
+		}
+		
 		default:
 			break;
 		}
@@ -72,14 +87,20 @@ public class CustomerServlet extends HttpServlet {
 		switch (op) {
 		case "new": {
 
-			//request.setAttribute("customers", service.leer());
-
+			Customer c = new Customer();
+			c.setCustomer_id(0);
+			c.setFirst_name(request.getParameter("first_name"));
+			c.setLast_name(request.getParameter("last_name"));
+			c.setEmail(request.getParameter("email"));
+			c.setActive(Integer.parseInt(request.getParameter("active")));
+			
+			service.crear(c);
+			
 			break;
 		}
 		case "edit": {
 
-			String id = request.getParameter("customer_id");
-			
+			String id = request.getParameter("customer_id");			
 			Customer c = service.leer(Integer.parseInt(id));
 			
 			c.setFirst_name(request.getParameter("first_name"));
@@ -89,15 +110,15 @@ public class CustomerServlet extends HttpServlet {
 			
 			service.actualizar(c);
 
-			request.setAttribute("customers", service.leer());
-			jsp = "/view/customers.jsp";
-
 			break;
 		}
 		default:
 			break;
 		}
 
+		request.setAttribute("customers", service.leer());
+		jsp = "/view/customers.jsp";
+		
 		getServletContext().getRequestDispatcher(jsp).forward(request, response);
 		
 	}

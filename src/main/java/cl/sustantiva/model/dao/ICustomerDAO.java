@@ -5,6 +5,13 @@ import cl.sustantiva.model.entity.Customer;
 import java.util.List;
 
 
+/**
+ * C - Create 	- Crear
+ * R - Read 	- Leer
+ * U - Update	- Actualizar
+ * D - Delete	- Borrar
+ */
+
 public interface ICustomerDAO {
 
 	public void create(Customer c);
